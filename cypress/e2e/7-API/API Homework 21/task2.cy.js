@@ -4,9 +4,8 @@
 ім'я користовуча змінювалось з реального на Happy Unicorn. Зробіть перевірку, що через UI відображається дійно змінене ім'я.*/
 
 
-import HomePage from "../../../page-objects/pages/HomePage";
-import SignInForm from "../../../page-objects/components/forms/SignInForm";
-
+import HomePage from "../../../../page-objects/pages/HomePage";
+import SignInForm from "../../../../page-objects/components/forms/SignInForm";
 
 it('Change the profile name using intercept', () => {
 
@@ -25,7 +24,7 @@ it('Change the profile name using intercept', () => {
     HomePage.open();
     HomePage.openSignInForm();
     SignInForm.logInWithCredentials('hubba.oljuna+t22@gmail.com', 'OHubba15');
-    cy.get('.profile-name').should('have.text', 'Happy');
-    cy.get('.profile-last-name').should('have.text', 'Unicorn');
+    cy.get('[routerlink=profile]').click();
+    cy.get('p.profile_name.display-4').should('have.text', 'Happy Unicorn');
 
 });
